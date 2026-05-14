@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AATMS for PWDs</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Verdana, Arial, sans-serif;
+    background: #0f172a;
+    color: #fff;
+    font-size: 18px;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(90deg,#2563eb,#06b6d4);
+    padding: 20px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* NAV */
+nav {
+    background: #1e40af;
+    text-align: center;
+    padding: 10px;
+    display: none;
+}
+
+nav button {
+    margin: 5px;
+    padding: 12px 18px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* SECTIONS */
+.section {
+    display: none;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.active { display: block; }
+
+/* CARDS */
+.card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+/* INPUTS */
+input, select {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+}
+
+/* BUTTONS */
+button.main {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.book { background: #22c55e; }
+.driver { background: #0ea5e9; }
+.sos { background: #ef4444; }
+
+/* ACCESSIBILITY FOCUS */
+button:focus, input:focus, select:focus {
+    outline: 3px solid yellow;
+}
+
+/* LOGIN */
+#login {
+    text-align: center;
+    margin-top: 100px;
+}
+#login input {
+    max-width: 300px;
+}
+
+/* MESSAGE BOX */
+#msg {
+    text-align: center;
+    color: #22c55e;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>🚍 AATMS for PWDs</header>
+
+<!-- LOGIN -->
+<div id="login" class="section active">
+<h2>🔐 Secure Login</h2>
+<input type="text" id="user" placeholder="Username">
+<input type="password" id="pass" placeholder="Password">
+<button class="main" onclick="login()">Login</button>
+<p id="error" style="color:red;"></p>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="menu">
+<button onclick="show('booking')">Booking</button>
+<button onclick="show('transport')">Transport</button>
+<button onclick="show('drivers')">Drivers</button>
+<button onclick="show('emergency')">Emergency</button>
+</nav>
+
+<p id="msg"></p>
+
+<!-- BOOKING -->
+<div id="booking" class="section">
+<h2>🚍 Book Transport</h2>
+<div class="card">
+<input type="text" placeholder="Pickup Location">
+<input type="text" placeholder="Destination">
+
+<select>
+<option>Wheelchair Access</option>
+<option>Visual Assistance</option>
+<option>Hearing Assistance</option>
+<option>No Assistance</option>
+</select>
+
+<button class="main book" onclick="notify('Ride booked successfully')">
+Confirm Booking
+</button>
+</div>
+</div>
+
+<!-- TRANSPORT -->
+<div id="transport" class="section">
+<h2>🚐 Available Transport</h2>
+
+<div class="card">
+<h3>Accessible Van</h3>
+<p>✔ Wheelchair ramps</p>
+<p>✔ Comfortable seating</p>
+</div>
+
+<div class="card">
+<h3>Assist Taxi</h3>
+<p>✔ Trained drivers</p>
+<p>✔ Door-to-door service</p>
+</div>
+
+<div class="card">
+<h3>Medical Shuttle</h3>
+<p>✔ Emergency ready</p>
+<p>✔ Fast response</p>
+</div>
+
+</div>
+
+<!-- DRIVERS -->
+<div id="drivers" class="section">
+<h2>👨‍✈️ Driver Platform</h2>
+
+<div class="card">
+<p><strong>Jane Mwangi</strong></p>
+<p>Status: Available</p>
+<button class="main driver" onclick="notify('Driver assigned')">
+Assign Ride
+</button>
+</div>
+
+<div class="card">
+<p><strong>John Kariuki</strong></p>
+<p>Status: On Trip</p>
+<button class="main driver" onclick="notify('Viewing driver details')">
+View Details
+</button>
+</div>
+
+</div>
+
+<!-- EMERGENCY -->
+<div id="emergency" class="section">
+<h2>🚨 Emergency Support</h2>
+
+<div class="card">
+<p>Press only in emergencies</p>
+<button class="main sos" onclick="notify('Emergency alert sent')">
+SOS ALERT
+</button>
+</div>
+
+</div>
+
+<script>
+function login() {
+    let u = document.getElementById("user").value;
+    let p = document.getElementById("pass").value;
+
+    if(u === "admin" && p === "1234") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("menu").style.display = "block";
+        show('booking');
+    } else {
+        document.getElementById("error").innerText = "Invalid login credentials";
+    }
+}
+
+function show(page) {
+    let sections = document.getElementsByClassName("section");
+    for(let i=0;i<sections.length;i++){
+        sections[i].style.display = "none";
+    }
+    document.getElementById(page).style.display = "block";
+}
+
+function notify(text) {
+    document.getElementById("msg").innerText = text;
+}
+</script>
+
+</body>
+</html>

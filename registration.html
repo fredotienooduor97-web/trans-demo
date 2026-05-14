@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="form-box">
+        <h1>User Registration</h1>
+
+        <form>
+
+            <label for="fullname">Full Name</label>
+            <input 
+                type="text" 
+                id="fullname"
+                placeholder="Enter your full name"
+                aria-label="Full Name"
+                required
+            >
+
+            <label for="email">Email Address</label>
+            <input 
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                aria-label="Email Address"
+                required
+            >
+
+            <label for="phone">Phone Number</label>
+            <input 
+                type="tel"
+                id="phone"
+                placeholder="Enter your phone number"
+                aria-label="Phone Number"
+                required
+            >
+
+            <label for="disability">Disability Type</label>
+            <select id="disability" aria-label="Disability Type">
+
+                <option>Blind</option>
+                <option>Deaf</option>
+                <option>Wheelchair User</option>
+                <option>Amputee</option>
+                <option>Crippled</option>
+                <option>Other</option>
+
+            </select>
+
+            <label for="password">Password</label>
+            <input 
+                type="password"
+                id="password"
+                placeholder="Create password"
+                aria-label="Password"
+                required
+            >
+
+            <label for="confirm">Confirm Password</label>
+            <input 
+                type="password"
+                id="confirm"
+                placeholder="Confirm password"
+                aria-label="Confirm Password"
+                required
+            >
+
+            <button type="submit">
+                Register
+            </button>
+
+            <p>
+                Already have an account?
+                <a href="login.html">Login Here</a>
+            </p>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
